@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AdventurousContacts.Models.Contact>
+
+@{
+    ViewBag.Title = "Contacts";
+}
+
+<h2>Contacts</h2>
+
+<p>
+    @Html.ActionLink("Create new contact", "Create")
+</p>
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>E-mail address</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.EmailAddress</td>
+                    <td>@Html.ActionLink("Edit", "Edit", new { id = item.ContactID} )</td>
+                    <td>@Html.ActionLink("Delete", "Delete", new { id = item.ContactID} )</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

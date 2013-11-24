@@ -37,6 +37,7 @@ namespace AdventurousContacts.Models.Repository
 
         public List<Contact> GetLastContacts(int count = 20)
         {
+            //return this._entities.Contacts.Skip(this._entities.Contacts.Count() - count).Take(count).ToList();
             return this._entities.Contacts.OrderByDescending(c => c.ContactID).Take(count).OrderBy(c => c.ContactID).ToList();
         }
 

@@ -1,0 +1,27 @@
+﻿@model AdventurousContacts.Models.Contact
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Fel uppstog")
+    @Html.HiddenFor(m => m.ContactID)
+
+    @Html.LabelFor(m => m.FirstName)
+    @Html.TextBoxFor(m => m.FirstName)
+    @Html.ValidationMessageFor(m => m.FirstName)
+
+    @Html.LabelFor(m => m.LastName)
+    @Html.TextBoxFor(m => m.LastName)
+    @Html.ValidationMessageFor(m => m.LastName)
+
+    @Html.LabelFor(m => m.EmailAddress)
+    @Html.TextBoxFor(m => m.EmailAddress)
+    @Html.ValidationMessageFor(m => m.EmailAddress)
+
+    <p>
+        @*
+            ändra text beroende på create/edit
+        *@
+        <input type="submit" value="Save" />
+    </p>
+}

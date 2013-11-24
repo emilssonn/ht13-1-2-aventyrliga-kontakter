@@ -1,0 +1,15 @@
+﻿@model AdventurousContacts.Models.Contact
+
+@{
+    ViewBag.Title = "Success";
+}
+
+<h2>Success</h2>
+
+@Html.DisplayFor(m => m.FirstName)
+@Html.DisplayFor(m => m.LastName)
+@Html.DisplayFor(m => m.EmailAddress)
+
+@ViewBag.Action
+
+@Html.ActionLink("Back to contacts", "Index")
