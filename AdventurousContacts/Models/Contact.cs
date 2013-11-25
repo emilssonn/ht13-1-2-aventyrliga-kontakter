@@ -9,19 +9,32 @@ namespace AdventurousContacts.Models
     [MetadataType(typeof(Contact_Metadata))]
     public partial class Contact
     {
+        public bool IsNew 
+        { 
+            get
+            {
+                return this.ContactID == 0;
+            }
+        }
+
         public class Contact_Metadata
         {
+            private const int maxLength = 50;
+
             [Required]
-            [MaxLength(50)]
+            [MaxLength(maxLength)]
             [EmailAddress]
+            [Display(Name = "E-mail address")]
             public string EmailAddress { get; set; }
 
             [Required]
-            [MaxLength(50)]
+            [MaxLength(maxLength)]
+            [Display(Name = "First name")]
             public string FirstName { get; set; }
 
             [Required]
-            [MaxLength(50)]
+            [MaxLength(maxLength)]
+            [Display(Name = "Last name")]
             public string LastName { get; set; }
         }
     }

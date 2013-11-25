@@ -1,27 +1,37 @@
 ﻿@model AdventurousContacts.Models.Contact
 
+@{
+    var htmlAttributes = new { maxlength = "50", size = "50" };
+    var submitValue = "Save";
+    var validationSumHeader = "Edit was unsuccessfull. Please correct any errors and try again";
+    if (Model == null || Model.IsNew)
+    {
+        submitValue = "Create";
+        validationSumHeader = "Create was unsuccessfull. Please correct any errors and try again";
+    }
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "Fel uppstog")
+    @Html.ValidationSummary(true, validationSumHeader)
     @Html.HiddenFor(m => m.ContactID)
 
     @Html.LabelFor(m => m.FirstName)
-    @Html.TextBoxFor(m => m.FirstName)
+    @Html.TextBoxFor(m => m.FirstName, htmlAttributes)
     @Html.ValidationMessageFor(m => m.FirstName)
 
     @Html.LabelFor(m => m.LastName)
-    @Html.TextBoxFor(m => m.LastName)
+    @Html.TextBoxFor(m => m.LastName, htmlAttributes)
     @Html.ValidationMessageFor(m => m.LastName)
 
     @Html.LabelFor(m => m.EmailAddress)
-    @Html.TextBoxFor(m => m.EmailAddress)
+    @Html.TextBoxFor(m => m.EmailAddress, htmlAttributes)
     @Html.ValidationMessageFor(m => m.EmailAddress)
-
-    <p>
-        @*
-            ändra text beroende på create/edit
-        *@
-        <input type="submit" value="Save" />
+    
+    <p>    
+        <input type="submit" value="@submitValue" />
     </p>
 }
+
+@Html.ActionLink("Back to contacts", "Index")

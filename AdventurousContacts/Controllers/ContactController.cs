@@ -39,6 +39,22 @@ namespace AdventurousContacts.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="FirstName, LastName, EmailAddress")]Contact contact)
         {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    this._repository.Add(contact);
+                    this._repository.Save();
+
+                    ViewBag.Action = "add";
+                    return View("Success", contact);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError(String.Empty,
+                        e.Message);
+                }
+            }
             return View("Create", contact);
         }
 
@@ -66,10 +82,10 @@ namespace AdventurousContacts.Controllers
                     ViewBag.Action = "delete";
                     return View("Success", contact);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     ModelState.AddModelError(String.Empty,
-                        "Error deleteing contact");
+                        e.Message);
                     return View("Delete", contact);
                 }
             }
@@ -78,14 +94,32 @@ namespace AdventurousContacts.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            return View();
+            var contact = this._repository.GetContactById(id);
+            if (contact == null)
+                return View("NotFound");
+            return View("Edit", contact);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Contact contact)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    this._repository.Update(contact);
+                    this._repository.Save();
+
+                    return View("Success", contact);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError(String.Empty,
+                        e.Message);
+                }
+            }
+            return View("Edit", contact);
         }
 
         protected override void Dispose(bool disposing)

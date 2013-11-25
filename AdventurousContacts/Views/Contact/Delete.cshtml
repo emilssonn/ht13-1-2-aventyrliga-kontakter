@@ -1,19 +1,19 @@
 ﻿@model AdventurousContacts.Models.Contact
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Contact";
 }
 
-<h2>Delete</h2>
-
-@Html.DisplayFor(m => m.FirstName)
-@Html.DisplayFor(m => m.LastName)
-@Html.DisplayFor(m => m.EmailAddress)
+<h2>Delete Contact</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
+
+    <p>
+        Confirm delete of @Model.FirstName @Model.LastName (@Model.EmailAddress)
+    </p>
     <p>
         <input type="submit" value="Delete" />
     </p>

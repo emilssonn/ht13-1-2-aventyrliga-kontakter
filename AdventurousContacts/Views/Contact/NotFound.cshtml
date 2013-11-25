@@ -1,7 +1,15 @@
 ﻿@model AdventurousContacts.Models.Contact
 
 @{
-    ViewBag.Title = "NotFound";
+    ViewBag.Title = "Contact Not Found";
 }
 
-<h2>NotFound</h2>
+<h2>Contact Not Found</h2>
+
+<p>
+    The contact you requested doesn´t exists or was deleted
+</p>
+
+<p>
+    @Html.ActionLink("Back to contacts", "Index")
+</p>
