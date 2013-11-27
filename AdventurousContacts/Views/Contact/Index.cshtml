@@ -4,14 +4,21 @@
     ViewBag.Title = "Contacts";
 }
 
+@*
+    Displays contacts in a table with action link to edit and delete.
+    Displays a success message if present.
+*@
+
 <h2>Contacts</h2>
 
+@Html.Partial("_Success")
+
 <p>
-    @Html.ActionLink("Create new contact", "Create")
+    @Html.ActionLink("Create new contact", "Create", null, new { @class = "btn btn-primary"})
 </p>
 @if (Model != null)
 {
-    <table>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>First name</th>
@@ -25,13 +32,30 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.FirstName</td>
-                    <td>@item.LastName</td>
-                    <td>@item.EmailAddress</td>
-                    <td>@Html.ActionLink("Edit", "Edit", new { id = item.ContactID} )</td>
-                    <td>@Html.ActionLink("Delete", "Delete", new { id = item.ContactID} )</td>
+                    <td class="breakWord">@item.FirstName</td>
+                    <td class="breakWord">@item.LastName</td>
+                    <td class="breakWord">@item.EmailAddress</td>
+                    <td>@Html.ActionLink("Edit", "Edit", new { id = item.ContactID }, new { @class = "btn btn-primary btn-xs" })</td>
+                    <td>@Html.ActionLink("Delete", "Delete", new { id = item.ContactID}, new { @class = "btn btn-danger btn-xs" } )</td>
                 </tr>
             }
         </tbody>
     </table>
+}
+
+@section scripts {
+    <script>
+        //Close alert after 5 seconds
+        $(function () {
+            if (!!$('.alert').length) {
+                window.setTimeout(function () {
+                    if (!!$('.alert').length) {
+                        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                            $(this).remove();
+                        });
+                    }
+                }, 5000);
+            }
+        });
+    </script>
 }

@@ -4,12 +4,16 @@
     ViewBag.Title = "Contact Not Found";
 }
 
+@*
+    No contact was found
+*@
+
 <h2>Contact Not Found</h2>
 
 <p>
-    The contact you requested doesn´t exists or was deleted
+    The contact you requested doesn´t exists or was deleted.
 </p>
 
 <p>
-    @Html.ActionLink("Back to contacts", "Index")
+    @Html.ActionLink("Back to contacts", "Index", null, new { @class = "btn btn-primary" })
 </p>

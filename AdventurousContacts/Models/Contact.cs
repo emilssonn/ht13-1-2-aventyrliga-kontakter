@@ -9,6 +9,7 @@ namespace AdventurousContacts.Models
     [MetadataType(typeof(Contact_Metadata))]
     public partial class Contact
     {
+        //If the contact is new = not created yet
         public bool IsNew 
         { 
             get

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Page Not Found";
+}
+
+@*
+    404 error page
+*@
+
+<h2>Error 404</h2>
+
+<p>Could not find the page: @ViewBag.RequestedUrl</p>
+
+<p>@Html.ActionLink("Back to contacts", "Index", "", null, new { @class = "btn btn-primary" })</p>
+
+@* Error page must be longer than 512 bytes for IE and Chrome to show it. 
+   So add padding in case we're short. *@
+@(new string(' ', 512))

@@ -1,7 +1,11 @@
 ﻿@model AdventurousContacts.Models.Contact
 
+@*
+    Form for createing and editing a contact
+*@
+
 @{
-    var htmlAttributes = new { maxlength = "50", size = "50" };
+    var htmlAttributes = new { maxlength = "50", size = "50", @class = "form-control" };
     var submitValue = "Save";
     var validationSumHeader = "Edit was unsuccessfull. Please correct any errors and try again";
     if (Model == null || Model.IsNew)
@@ -17,21 +21,26 @@
     @Html.ValidationSummary(true, validationSumHeader)
     @Html.HiddenFor(m => m.ContactID)
 
-    @Html.LabelFor(m => m.FirstName)
-    @Html.TextBoxFor(m => m.FirstName, htmlAttributes)
-    @Html.ValidationMessageFor(m => m.FirstName)
-
-    @Html.LabelFor(m => m.LastName)
-    @Html.TextBoxFor(m => m.LastName, htmlAttributes)
-    @Html.ValidationMessageFor(m => m.LastName)
-
-    @Html.LabelFor(m => m.EmailAddress)
-    @Html.TextBoxFor(m => m.EmailAddress, htmlAttributes)
-    @Html.ValidationMessageFor(m => m.EmailAddress)
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, htmlAttributes)
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, htmlAttributes)
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmailAddress)
+        @Html.TextBoxFor(m => m.EmailAddress, htmlAttributes)
+        @Html.ValidationMessageFor(m => m.EmailAddress)
+    </div>
     
     <p>    
-        <input type="submit" value="@submitValue" />
+        <button type="submit" class="btn btn-success">@submitValue</button>
+        @Html.ActionLink("Back to contacts", "Index")
     </p>
 }
-
-@Html.ActionLink("Back to contacts", "Index")

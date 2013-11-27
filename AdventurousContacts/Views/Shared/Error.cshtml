@@ -1,7 +1,16 @@
-﻿@{
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
     ViewBag.Title = "Error";
 }
-<h1>Error</h1>
-<h2>An error occurred while processing your request.</h2>
 
-@Html.ActionLink("Back to contacts", "Index")
+@*
+    Error page for unhandled exceptions
+*@
+
+<h2>Error</h2>
+
+<p>Sorry, an error occurred while processing your request.</p>
+<p>@Html.ActionLink("Back to contacts", "Index", null, new { @class = "btn btn-primary" })</p>
+
+

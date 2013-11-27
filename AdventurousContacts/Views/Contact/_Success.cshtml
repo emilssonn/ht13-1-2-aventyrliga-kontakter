@@ -1,0 +1,17 @@
+﻿@*
+    Displays a success message if present    
+*@
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Success!</strong>
+        <p>
+            @TempData["Success"]
+        </p>
+    </div>
+}
+    
+
+

@@ -4,19 +4,25 @@
     ViewBag.Title = "Delete Contact";
 }
 
+@*
+    Confirm delete of a contact
+*@
+
 <h2>Delete Contact</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    @Html.ValidationSummary("Delete was unsuccessfull.")
 
     <p>
-        Confirm delete of @Model.FirstName @Model.LastName (@Model.EmailAddress)
+        Confirm delete of: @Model.FirstName @Model.LastName (@Model.EmailAddress)
     </p>
-    <p>
-        <input type="submit" value="Delete" />
+    <p class="text-danger">
+        <strong>This cannot be undone!</strong>
+    </p>
+    <p>    
+        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        @Html.ActionLink("Back to contacts", "Index")
     </p>
 }
-
-@Html.ActionLink("Back to contacts", "Index")

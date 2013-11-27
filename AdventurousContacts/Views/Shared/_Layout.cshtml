@@ -8,8 +8,23 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <h1>Adventurous Contacts</h1>
-    @RenderBody()
+    <div id="wrap">
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1>Adventurous Contacts</h1>
+                    <hr class="addMargin" />
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">ASP.NET MVC (1DV409) Assignment 2</p>
+      </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)

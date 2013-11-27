@@ -59,5 +59,32 @@ namespace AdventurousContacts.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1} ({2}) was successfully created..
+        /// </summary>
+        internal static string CreateSuccessMessage {
+            get {
+                return ResourceManager.GetString("CreateSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1} ({2}) was successfully deleted..
+        /// </summary>
+        internal static string DeleteSuccessMessage {
+            get {
+                return ResourceManager.GetString("DeleteSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1} ({2}) was successfully updated..
+        /// </summary>
+        internal static string EditSuccessMessage {
+            get {
+                return ResourceManager.GetString("EditSuccessMessage", resourceCulture);
+            }
+        }
     }
 }
